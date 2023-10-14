@@ -10,7 +10,7 @@ const EditReminder = () => {
     const [getProduct, setProduct] = useState({
         title: '',
         description: '',
-        
+
     });
 
     const changeHandle = (e) => {
@@ -32,6 +32,7 @@ const EditReminder = () => {
     // GET API for getting particular product data for prefilled form : -------------------------------------------------------
 
     const { id } = useParams();
+    console.log('id', id);
 
     const getProductValue = () => {
         axios.get(`https://reminder-backend-8ll6.onrender.com/editreminders/${id}`).then((res) => {
@@ -87,7 +88,7 @@ const EditReminder = () => {
                             <label htmlFor="">Description</label><br />
                             <input type="text" placeholder='About Product' autoComplete='off' name='description' value={getProduct.description} onChange={changeHandle} required /><br />
 
-                        
+
                         </div>
 
                         <div className="sectionTwo">

@@ -11,14 +11,13 @@ const Home = () => {
 
     const getUsername = sessionStorage.getItem('username');
 
-   
+
     var date = new Date();
-  
+
     var n = date.toDateString();
-  
-    console.log('date', n);
+
     var time = date.toLocaleTimeString();
-   
+
 
 
 
@@ -29,7 +28,6 @@ const Home = () => {
                 <div className="flex justify-end space-x-5">
                     <span className='text-white text-2xl'>{time}</span>
                     <h1 className='text-white'>{n}</h1>
-
                 </div>
 
 
