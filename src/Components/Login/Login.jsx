@@ -88,17 +88,17 @@ const Login = () => {
         className='flex flex-col w-[400px] border rounded-md px-5 py-5'
       >
         <div className='titile'>
-          <h1 className='text-3xl text-green-500 font-semibold mb-5'>Login</h1>
+          <h1 className='text-3xl  font-semibold mb-5'>Login</h1>
         </div>
 
         <div className='flex flex-col'>
           <label htmlFor='' className='font-semibold text-sm'>
-            Username
+            Email
           </label>
           <input
             type='text'
             placeholder='Email'
-            className='border text-green-400  outline-none  py-2 px-2 rounded-sm'
+            className='border outline-none  py-2 px-2 rounded-sm'
             autoComplete='off'
             onChange={inputChangeHandle}
             name='email'
