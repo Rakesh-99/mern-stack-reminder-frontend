@@ -11,6 +11,8 @@ import { toast } from 'react-toastify'
 
 const Signup = () => {
 
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate()
 
   const initialState = {
@@ -68,20 +70,24 @@ const Signup = () => {
       toast.error('Password can not be less than 6 char')
       return false
     } else {
+      setLoading(true);
       axios
         .post('https://reminder-backend-8ll6.onrender.com/signup', signupInfo)
         .then(res => {
           if (res.status === 200) {
+            setLoading(false);
 
             toast.success('OTP has been sent to your mail');
-            setTimeout(() => {
-              navigate('/otpVerify', { state: { email: signupInfo.email } });
-            }, 3000);
+
+            navigate('/otpVerify', { state: { email: signupInfo.email } });
+
           }
         }).catch((err) => {
+          setLoading(false);
           toast.error(err.response.data.res);
         })
         .catch(err => {
+          setLoading(false);
           toast.error('Something went wrong, Please try again later');
         });
     }
@@ -94,10 +100,10 @@ const Signup = () => {
 
       <form
         action=''
-        className='flex flex-col w-[400px]  rounded-md px-5 py-5'
+        className='flex flex-col w-[400px] border  rounded-md px-5 py-5'
       >
         <div className='titile'>
-          <h1 className='text-3xl text-indigo-500 font-semibold mb-5'>Signup</h1>
+          <h1 className='text-3xl  font-semibold mb-5'>Signup</h1>
         </div>
 
 
@@ -109,7 +115,7 @@ const Signup = () => {
           <input
             type='text'
             placeholder='Username'
-            className='border border-indigo-500 outline-none py-2 px-1  rounded-sm   text-indigo-300'
+            className='border border-indigo-500 outline-none py-2 px-1  rounded-sm'
             autoComplete='off'
             onChange={inputChangeHandle}
             name='username'
@@ -125,7 +131,7 @@ const Signup = () => {
           <input
             type='text'
             placeholder='Email'
-            className='border border-indigo-500 outline-none  py-2 px-1 rounded-sm   text-indigo-300 '
+            className='border border-indigo-500 outline-none  py-2 px-1 rounded-sm  '
             autoComplete='off'
             onChange={inputChangeHandle}
             name='email'
@@ -141,7 +147,7 @@ const Signup = () => {
           <input
             type='password'
             placeholder='Password'
-            className='border border-indigo-500 outline-none py-2 px-1 rounded-sm  text-indigo-300 '
+            className='border border-indigo-500 outline-none py-2 px-1 rounded-sm  '
             onChange={inputChangeHandle}
             name='password'
             value={signupInfo.password}
@@ -149,19 +155,20 @@ const Signup = () => {
         </div>
 
         <button
-          className='bg-gradient-to-r from-indigo-500 to-blue-500 text-white py-2 px-2 mt-5  rounded-sm font-semibold active:bg-green-600'
+          className='bg-indigo-500 text-white py-2 px-2 mt-5  shadow-xl shadow-blue-300 rounded-md font-semibold active:bg-indigo-800'
           onClick={register}
         >
-          Register
+          {loading === true ? <p className='font-bold'>Registering user...</p> : <>Register</>}
         </button>
 
 
         <div className='flex justify-center mt-5'>
           <Link
             to={'/login'}
-            className=' text-indigo-400  font-lg text-base t hover:underline active:text-green-600'
+            className='font-lg text-base'
           >
             Already have an account ?
+            <span className='text-blue-700 hover:underline '>Login</span>
           </Link>
         </div>
       </form>

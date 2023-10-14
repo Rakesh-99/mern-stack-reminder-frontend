@@ -7,6 +7,8 @@ import Navbar from '../NavBar/NavBar'
 
 const Login = () => {
 
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate()
 
   const initialState = {
@@ -46,10 +48,12 @@ const Login = () => {
       return false
     } else {
 
+      setLoading(true);
       axios
         .post('https://reminder-backend-8ll6.onrender.com/login', loginInfo)
         .then(res => {
           if (res.status === 200) {
+            setLoading(false);
 
             sessionStorage.setItem(
               'accessToken',
@@ -63,11 +67,11 @@ const Login = () => {
 
             sessionStorage.setItem('username', res.data.username);
             sessionStorage.setItem('email', res.data.email)
-            setLoginInfo({ email: '', password: '' })
             navigate('/');
           }
         })
         .catch(err => {
+          setLoading(false);
           toast.error(err.response.data.res);
         })
     }
@@ -94,7 +98,7 @@ const Login = () => {
           <input
             type='text'
             placeholder='Email'
-            className='border text-green-400  outline-none  py-2 px-1 rounded-sm'
+            className='border text-green-400  outline-none  py-2 px-2 rounded-sm'
             autoComplete='off'
             onChange={inputChangeHandle}
             name='email'
@@ -117,18 +121,18 @@ const Login = () => {
         </div>
 
         <button
-          className='bg-gradient-to-r from-green-500 to-green-700 text-white py-1 px-2 mt-5  rounded-sm font-semibold active:bg-blue-900'
+          className='bg-green-700 text-white py-2  mt-5  rounded-md shadow-xl shadow-green-300 font-semibold active:bg-blue-900'
           onClick={login}
         >
-          Login
+          {loading === true ? <p className='font-semibold'>Please wait</p> : <p>Login</p>}
         </button>
         <div className='flex justify-center mt-5'>
           <Link
             to={'/signup'}
-            className='text-green-500 font-lg text-base hover:underline active:text-green-900'
+            className=' font-lg text-base active:text-green-900'
           >
             <span>Dont have an account ? </span>
-            <span>Create one</span>
+            <span className='text-blue-700 hover:underline'>Create one</span>
           </Link>
         </div>
       </form>

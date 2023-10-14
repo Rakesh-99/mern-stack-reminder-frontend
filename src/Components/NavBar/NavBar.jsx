@@ -23,7 +23,7 @@ const Navbar = () => {
         sessionStorage.removeItem('username');
         sessionStorage.removeItem('email');
         alert('You have been logged out successfully')
-        navigate('/blog');
+        navigate('/');
     }
 
 
@@ -106,7 +106,7 @@ const Navbar = () => {
 
 
                         <li className='list-none text-white cursor-pointer hover:text-gray-300 hover:border-b-2 border-indigo-400'><Link to={'/viewreminders'}>View Reminders</Link></li>
-                        
+
                         <li className='list-none text-white cursor-pointer hover:text-gray-300'><Link to={'/about'}>About</Link></li>
                         {
                             accessToken && <li className='list-none text-white cursor-pointer hover:text-gray-300'><span onClick={userLogout} className='bg-red-700 px-1 py-1 rounded-sm'>Logout</span></li>

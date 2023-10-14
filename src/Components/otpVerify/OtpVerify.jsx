@@ -7,6 +7,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const OtpVerify = () => {
 
+    const [loading, setLoading] = useState(false);
+
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -30,22 +32,27 @@ const OtpVerify = () => {
         const email = location.state.email; // Get email from location state
 
         // Make the API call to verify the OTP
+        setLoading(true);
         axios
             .post(' https://reminder-backend-8ll6.onrender.com/otpverify', { email, emailToken: otp })
             .then((res) => {
                 console.log(res.data);
                 if (res.status === 200) {
+                    setLoading(false);
                     toast.success('You have been verified');
 
                     setTimeout(() => {
                         navigate('/login');
                     }, 1000);
 
-                } else if (res.status === 404) {
-                    toast.error('Invalid OTP entered');
+                } else if (res.status === 400 || res.status === 404) {
+                    setLoading(false);
+                    toast.error('Invalid otp');
                 }
+
             })
             .catch((err) => {
+                setLoading(false);
                 console.log(err);
             });
 
@@ -53,7 +60,7 @@ const OtpVerify = () => {
 
     return (
         <>
-            <div className="w-full h-screen bg-gray-800 flex flex-col justify-center items-center space-y-3">
+            <div className="w-full h-screen bg-slate-200 flex flex-col justify-center items-center space-y-3">
                 <input
                     type="text"
                     placeholder="Enter OTP"
@@ -64,10 +71,10 @@ const OtpVerify = () => {
                 />
 
                 <button
-                    className="bg-blue-500 text-white font-semibold w-72 py-1 px-3 rounded-sm active:bg-blue-700 "
+                    className="bg-blue-700 text-white font-semibold w-32 py-1 transition-all rounded-md px-3 active:bg-blue-400 "
                     onClick={otpHandle}
                 >
-                    Submit
+                    {loading === true ? <p className='font-semibold transition-all'>Verifying user</p> : <p>Submit</p>}
                 </button>
             </div>
         </>
