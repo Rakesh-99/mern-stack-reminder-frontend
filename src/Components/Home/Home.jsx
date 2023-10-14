@@ -11,12 +11,26 @@ const Home = () => {
 
     const getUsername = sessionStorage.getItem('username');
 
+   
+    var date = new Date();
+  
+    var n = date.toDateString();
+  
+    console.log('date', n);
+    var time = date.toLocaleTimeString();
+   
+
 
 
     return (
         <div className="">
             <NavBar />
             <div className=" bg-gray-900 h-screen flex px-10 py-5 w-full max-[760px]:flex-col max-[760px]:justify-center max-[760px]:items-center">
+                <div className="flex justify-end space-x-5">
+                    <span className='text-white text-2xl'>{time}</span>
+                    <h1 className='text-white'>{n}</h1>
+
+                </div>
 
 
                 <div className="w-1/2 flex items-center justify-center flex-col max-[760px]:w-full">

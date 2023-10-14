@@ -10,10 +10,7 @@ const EditReminder = () => {
     const [getProduct, setProduct] = useState({
         title: '',
         description: '',
-        category: '',
-        price: '',
-        ratings: '',
-        thumbnail: ''
+        
     });
 
     const changeHandle = (e) => {
