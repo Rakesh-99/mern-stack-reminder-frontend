@@ -29,7 +29,7 @@ const App = () => {
             <Router>
                 <Routes>
                     <Route path='/viewreminders' element={<ViewReminders />} />
-                    <Route path='/editreminder' element={<EditReminder />} />
+                    <Route path='/editreminder/:id' element={<EditReminder />} />
                     <Route path='/createreminder' element={<CreateReminder />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/signup' element={<Signup />} />
