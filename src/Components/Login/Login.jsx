@@ -47,7 +47,7 @@ const Login = () => {
     } else {
 
       axios
-        .post(' http://localhost:8000/login', loginInfo)
+        .post('https://reminder-backend-8ll6.onrender.com/login', loginInfo)
         .then(res => {
           if (res.status === 200) {
 

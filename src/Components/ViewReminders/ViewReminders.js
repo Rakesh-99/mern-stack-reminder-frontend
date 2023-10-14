@@ -34,7 +34,7 @@ const ViewReminders = () => {
 
 
 
-        axios.delete(`http://localhost:8000/deletereminders/${id}`).then((res) => {
+        axios.delete(`https://reminder-backend-8ll6.onrender.com/deletereminders/${id}`).then((res) => {
             alert('Reminder has been deleted from the list');
             fetchData();
         }).catch((err) => {
