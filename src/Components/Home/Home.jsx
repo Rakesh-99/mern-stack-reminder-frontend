@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
 
+    const getUsername = sessionStorage.getItem('username');
+
+
 
     return (
         <div className="">
@@ -17,13 +20,15 @@ const Home = () => {
 
 
                 <div className="w-1/2 flex items-center justify-center flex-col max-[760px]:w-full">
+                    {getUsername ? <h1 className='text-white font-semibold text-4xl my-2'>Hello {getUsername},</h1> : <></>}
+
                     <h1 className='text-white text-2xl'>Welcome to MiniReminder</h1>
 
                     <div className="py-10 ">
                         <TypeWriter />
                     </div>
 
-                    <Link to={'/createreminder'} className='text-violet-500 py-2 active:bg-violet-800 bg-white rounded-sm  px-3 '>Create Reminder</Link>
+                    <Link to={'/createreminder'} className='text-violet-700 py-2 font-semibold active:bg-violet-800 bg-white rounded-sm  px-3 '>Create Reminder</Link>
 
                 </div>
 
