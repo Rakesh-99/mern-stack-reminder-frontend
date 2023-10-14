@@ -15,7 +15,7 @@ const ViewReminders = () => {
 
     const fetchData = () => {
         try {
-            axios.get('http://localhost:8000/viewreminders/').then((res) => {
+            axios.get('https://reminder-backend-8ll6.onrender.com/viewreminders/').then((res) => {
                 setData(res.data);
             });
         } catch {
@@ -60,10 +60,10 @@ const ViewReminders = () => {
 
                                 <div className="showData shadow-md" key={getValue._id}>
                                     <div className='productTitle  view'> <h2>Title : {getValue.title}</h2></div>
-                                
-                                
+
+
                                     <div className='productDescription view'>Description : {getValue.description}</div>
-                        
+
                                     <div className="btns">
                                         <Link className='editBtn  bg-indigo-500 py-1 px-3 rounded-md font-semibold text-white' to={`/editreminder/${getValue._id}`}>Edit</Link>
                                         <button className='delete bg-red-500 py-1 px-3 rounded-md font-semibold text-white' onClick={() => { deleteHandle(getValue._id) }}>Delete</button>

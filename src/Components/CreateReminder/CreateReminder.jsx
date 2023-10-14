@@ -27,7 +27,7 @@ const CreateReminder = () => {
         // POST API :
 
 
-        axios.post('http://localhost:8000/createreminder/', getProduct).then((res) => {
+        axios.post('https://reminder-backend-8ll6.onrender.com/createreminder/', getProduct).then((res) => {
             alert('Reminder has been added to your list ');
         }).catch((errLog) => {
             alert('An error occurred while adding the Reminder' + errLog);
