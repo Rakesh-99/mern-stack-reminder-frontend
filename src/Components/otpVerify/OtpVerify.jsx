@@ -31,7 +31,7 @@ const OtpVerify = () => {
 
         // Make the API call to verify the OTP
         axios
-            .post('https://reminder-backend-8ll6.onrender.com/otpverify', { email, emailToken: otp })
+            .post(' https://reminder-backend-8ll6.onrender.com/otpverify', { email, emailToken: otp })
             .then((res) => {
                 console.log(res.data);
                 if (res.status === 200) {
@@ -75,5 +75,3 @@ const OtpVerify = () => {
 };
 
 export default OtpVerify;
-
-
