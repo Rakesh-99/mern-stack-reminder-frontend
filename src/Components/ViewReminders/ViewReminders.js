@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Navbar from '../NavBar/NavBar'
 
 
 const ViewReminders = () => {
@@ -48,23 +49,23 @@ const ViewReminders = () => {
     return (
 
         <>
-            <div className="viewProductSection">
-                <h2 style={{ textAlign: 'center', color: 'grey' }}>REMINDER </h2>
-                <div className="createBtnContainer">
-                    <Link className='createBtn' to={'/createreminder'}>Create Reminder</Link>
+            <Navbar />
+            <div className="viewProductSection px-10">
+                <div className="createBtnContainer text-center py-10">
+                    <Link className='createBtn px-2 bg-green-600 text-white rounded-md py-1 ' to={'/createreminder'}>Create Reminder</Link>
                 </div>
-                <div className="viewProduct">
+                <div className="viewProduct grid grid-cols-1 sm:grid-cols-2 gap-2 md:grid-cols-4">
                     {
                         getData.map((getValue) => {
                             return (
 
-                                <div className="showData shadow-md" key={getValue._id}>
-                                    <div className='productTitle  view'> <h2>Title : {getValue.title}</h2></div>
+                                <div className="showData shadow-xl shadow-violet-300 py-5 px-5 space-y-3" key={getValue._id} >
+                                    <div className='productTitle  view'> <h2 className='font-semibold'>Title : {getValue.title}</h2></div>
 
 
                                     <div className='productDescription view'>Description : {getValue.description}</div>
 
-                                    <div className="btns">
+                                    <div className="btns space-x-3">
                                         <Link className='editBtn  bg-indigo-500 py-1 px-3 rounded-md font-semibold text-white' to={`/editreminder/${getValue._id}`}>Edit</Link>
                                         <button className='delete bg-red-500 py-1 px-3 rounded-md font-semibold text-white' onClick={() => { deleteHandle(getValue._id) }}>Delete</button>
                                     </div>
