@@ -36,7 +36,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-gradient-to-r from-blue-900 to-violet-800 p-3 sticky top-0 left-0 transition-all">
+        <nav className="bg-gradient-to-r from-blue-900 to-violet-900 p-3 sticky top-0 left-0 transition-all">
             <div className="flex items-center justify-between transition-all ">
 
                 <div className="flex items-center">

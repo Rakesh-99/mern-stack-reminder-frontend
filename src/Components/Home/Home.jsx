@@ -24,20 +24,21 @@ const Home = () => {
     return (
         <div className="">
             <NavBar />
+           
+            <div className="flex items-center justify-center space-x-5 bg-gray-800">
+                <span className='text-white text-xl '>{time}</span>
+                <h1 className='text-white'>{n}</h1>
+            </div>
             <div className=" bg-gray-900 h-screen flex px-10 py-5 w-full max-[760px]:flex-col max-[760px]:justify-center max-[760px]:items-center">
-                <div className="flex justify-end space-x-5">
-                    <span className='text-white text-2xl'>{time}</span>
-                    <h1 className='text-white'>{n}</h1>
-                </div>
 
 
-                <div className="w-1/2 flex items-center justify-center flex-col max-[760px]:w-full">
+                <div className="w-full px-10 flex items-center justify-center  flex-col max-[760px]:w-full">
                     {getUsername ? <h1 className='text-white font-semibold text-4xl my-2'>Hello {getUsername},</h1> : <></>}
 
                     <h1 className='text-white text-2xl'>Welcome to MiniReminder</h1>
 
                     <div className="py-10 ">
-                        <TypeWriter />
+                        <TypeWriter/>
                     </div>
 
                     <Link to={'/createreminder'} className='text-violet-700 py-2 font-semibold active:bg-violet-800 bg-white rounded-sm  px-3 '>Create Reminder</Link>
