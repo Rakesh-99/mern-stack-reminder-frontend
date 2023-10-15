@@ -25,17 +25,17 @@ const Home = () => {
         <div className="">
             <NavBar />
            
-            <div className="flex items-center justify-center space-x-5 bg-gray-800">
+            <div className="flex items-center justify-center  bg-gray-800">
                 <span className='text-white text-xl '>{time}</span>
                 <h1 className='text-white'>{n}</h1>
             </div>
-            <div className=" bg-gray-900 h-screen flex px-10 py-5 w-full max-[760px]:flex-col max-[760px]:justify-center max-[760px]:items-center">
+            <div className=" bg-gray-900 h-screen flex py-5 w-full max-[760px]:flex-col max-[760px]:justify-center max-[760px]:items-center">
 
 
-                <div className="w-full px-10 flex items-center justify-center  flex-col max-[760px]:w-full">
+                <div className="w-full flex items-center justify-center  flex-col max-[760px]:w-full">
                     {getUsername ? <h1 className='text-white font-semibold text-4xl my-2'>Hello {getUsername},</h1> : <></>}
 
-                    <h1 className='text-white text-2xl'>Welcome to MiniReminder</h1>
+                    <h1 className='text-white text-xl w-full text-center md:text-2xl sm:text-sm' >Welcome to MiniReminder</h1>
 
                     <div className="py-10 ">
                         <TypeWriter/>
