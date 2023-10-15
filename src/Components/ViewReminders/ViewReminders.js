@@ -55,15 +55,15 @@ const ViewReminders = () => {
             <Navbar />
             <div className="viewProductSection px-10">
                 <div className="createBtnContainer text-center py-10">
-                    <Link className='createBtn px-2 bg-green-600 text-white rounded-md py-1 ' to={'/createreminder'}>Create Reminder</Link>
+                    <Link className='createBtn px-2 bg-green-600 text-white rounded-md py-2 ' to={'/createreminder'}>Create Reminder</Link>
                 </div>
-                <div className="viewProduct grid grid-cols-1 sm:grid-cols-2 gap-2 md:grid-cols-4">
+                <div className="viewProduct grid grid-cols-1 sm:grid-cols-2 gap-5 md:grid-cols-4">
                     {
                         loading === true ? <div className=''><h1 className='text-xl font-semibold'>Fetching the data from server...</h1> </div> :
                             getData && getData.map((getValue) => {
                                 return (
 
-                                    <div className="showData shadow-xl shadow-violet-300 py-5 px-5 space-y-3" key={getValue._id} >
+                                    <div className="showData hover:scale-105 transition-all shadow-xl shadow-violet-300 py-7 px-3 space-y-3" key={getValue._id} >
                                         <div className='productTitle  view'> <h2 className='font-semibold'>Title : {getValue?.title}</h2></div>
 
 

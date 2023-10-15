@@ -77,24 +77,24 @@ const EditReminder = () => {
         <>
             <div className="formController" style={{ display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center' }}>
                 <form action="">
-                    <h1 style={{ marginTop: '3rem' }}>Update Product</h1>
+                    <h1 className='text-2xl mb-10 font-semibold'>Update Reminder</h1>
                     <div className="formContainer">
 
-                        <div className="sectionOne">
+                        <div className="sectionOne space-y-2">
 
-                            <label htmlFor="">Title</label><br />
-                            <input type="text" placeholder='Product Name' autoComplete='off' name='title' value={getProduct.title} onChange={changeHandle} required /> <br />
+                            <label htmlFor="">Reminder title</label><br />
+                            <input type="text" placeholder='Reminder title' autoComplete='off' name='title' value={getProduct.title} onChange={changeHandle} className='w-80 rounded-sm px-3 py-2 border' required /> <br />
 
-                            <label htmlFor="">Description</label><br />
-                            <input type="text" placeholder='About Product' autoComplete='off' name='description' value={getProduct.description} onChange={changeHandle} required /><br />
+                            <label htmlFor="">Reminder description</label><br />
+                            <input type="text" className='w-80 rounded-sm px-3 py-2 border' placeholder='Reminder description' autoComplete='off' name='description' value={getProduct.description} onChange={changeHandle} required /><br />
 
 
                         </div>
 
                         <div className="sectionTwo">
 
-                            <button type='button' className='addBtn' onClick={updateProduct}>Update</button><br /><br />
-                            <Link to={'/'} className='editBackButton' style={{ textDecoration: 'none', color: '#fff' }}>Back</Link>
+                            <button type='button' className='addBtn w-80 bg-indigo-700 text-white rounded-md py-2 mt-5' onClick={updateProduct}>Update</button><br /><br />
+                            <Link to={'/'} className='editBackButton bg-green-600 text-white py-1 px-10 rounded-md'> {'<- '} Back</Link>
                         </div>
 
                     </div>
