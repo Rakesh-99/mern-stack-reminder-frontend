@@ -35,7 +35,8 @@ const EditReminder = () => {
     console.log('id', id);
 
     const getProductValue = () => {
-        axios.get(`https://reminder-backend-8ll6.onrender.com/editreminders/${id}`).then((res) => {
+        axios.get(`https://reminder-backend-8ll6.onrender.com/viewreminders/${id}`).then((res) => {
+            console.log('response', res.data);
             setProduct(res.data);
         }).catch((err) => {
             alert('An error encountered while fetching the resources - ' + err);

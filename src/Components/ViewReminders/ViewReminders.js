@@ -71,7 +71,7 @@ const ViewReminders = () => {
                                         <div className='productDescription view'>Description : {getValue?.description}</div>
 
                                         <div className="btns space-x-3">
-                                            <Link className='editBtn  bg-indigo-500 py-1 px-3 rounded-md font-semibold text-white' to={`/editreminder/${getValue._id}`}>Edit</Link>
+                                            <Link className='editBtn  bg-indigo-500 py-1 px-3 rounded-md font-semibold text-white' to={`/editreminders/${getValue._id}`}>Edit</Link>
                                             <button className='delete bg-red-500 py-1 px-3 rounded-md font-semibold text-white' onClick={() => { deleteHandle(getValue._id) }}>Delete</button>
                                         </div>
                                     </div>
