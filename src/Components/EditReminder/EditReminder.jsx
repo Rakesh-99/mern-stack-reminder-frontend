@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import Spinner from '../Spinner/Spinner';
+import { toast } from 'react-toastify';
 
 
 
 const EditReminder = () => {
 
+    const [loader, setLoader] = useState(false);
 
     const [getProduct, setProduct] = useState({
         title: '',
@@ -32,11 +35,11 @@ const EditReminder = () => {
     // GET API for getting particular product data for prefilled form : -------------------------------------------------------
 
     const { id } = useParams();
-    console.log('id', id);
 
     const getProductValue = () => {
+        setLoader(true);
         axios.get(`https://reminder-backend-8ll6.onrender.com/viewreminders/${id}`).then((res) => {
-            console.log('response', res.data);
+            setLoader(false);
             setProduct(res.data);
         }).catch((err) => {
             alert('An error encountered while fetching the resources - ' + err);
@@ -58,10 +61,13 @@ const EditReminder = () => {
 
 
     const updateProduct = () => {
+        setLoader(true);
         axios.patch(`https://reminder-backend-8ll6.onrender.com/editreminders/${id}`, getProduct).then((res) => {
-            alert('The Product has been updated ');
+            setLoader(false);
+            toast.success('The Product has been updated');
         }).catch((err) => {
-            alert(`An error occurred while updating the product~${err}`);
+            setLoader(false);
+            toast.error('An error occurred while updating the product');
         });
 
         setProduct({
@@ -79,6 +85,7 @@ const EditReminder = () => {
             <div className="formController" style={{ display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center' }}>
                 <form action="">
                     <h1 className='text-2xl mb-10 font-semibold'>Update Reminder</h1>
+                    <h1>{loader === true ? <p className='font-semibold text-indigo-700'>Loading...{<Spinner />}</p> : <></>}</h1>
                     <div className="formContainer">
 
                         <div className="sectionOne space-y-2">
@@ -94,8 +101,8 @@ const EditReminder = () => {
 
                         <div className="sectionTwo">
 
-                            <button type='button' className='addBtn w-80 bg-indigo-700 text-white rounded-md py-2 mt-5' onClick={updateProduct}>Update</button><br /><br />
-                            <Link to={'/'} className='editBackButton bg-green-600 text-white py-1 px-10 rounded-md'> {'<- '} Back</Link>
+                            <button type='button' className='addBtn w-80 bg-indigo-700 text-white rounded-md py-2 mt-5' onClick={updateProduct}>{loader === true ? <p>Updating...<Spinner /></p> : <>Update</>}</button><br /><br />
+                            <Link to={'/viewreminders'} className='editBackButton bg-green-600 text-white py-1 px-10 rounded-md'> {'<- '} Back</Link>
                         </div>
 
                     </div>

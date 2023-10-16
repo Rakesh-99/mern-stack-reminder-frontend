@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Navbar from '../NavBar/NavBar'
 import Spinner from '../Spinner/Spinner';
+import { toast } from 'react-toastify';
 
 
 const ViewReminders = () => {
@@ -36,14 +37,14 @@ const ViewReminders = () => {
     // DELETE API :
 
     const deleteHandle = (id) => {
-
-
-
+        setLoading(true);
         axios.delete(`https://reminder-backend-8ll6.onrender.com/deletereminders/${id}`).then((res) => {
-            alert('Reminder has been deleted from the list');
+            setLoading(false);
+            toast.success('Reminder has been deleted from the list');
             fetchData();
         }).catch((err) => {
-            alert('An error encountered while deleting the Reminder');
+            setLoading(false);
+            toast.success('An error encountered while deleting the Reminder');
         });
 
 
@@ -51,7 +52,6 @@ const ViewReminders = () => {
 
 
     return (
-
         <>
             <Navbar />
             <div className="viewProductSection px-10">
@@ -71,8 +71,8 @@ const ViewReminders = () => {
                                         <div className='productDescription view'>Description : {getValue?.description}</div>
 
                                         <div className="btns space-x-3">
-                                            <Link className='editBtn  bg-indigo-500 py-1 px-3 rounded-md font-semibold text-white' to={`/editreminders/${getValue._id}`}>Edit</Link>
-                                            <button className='delete bg-red-500 py-1 px-3 rounded-md font-semibold text-white' onClick={() => { deleteHandle(getValue._id) }}>Delete</button>
+                                            <Link className='editBtn  bg-indigo-500 py-1 px-5 rounded-md font-semibold text-white' to={`/editreminders/${getValue._id}`}>Edit</Link>
+                                            <button className='delete bg-red-500 py-1 px-3 rounded-md font-semibold text-white' onClick={() => { deleteHandle(getValue._id) }}>{loading === true ? <p>Deleting... <Spinner /></p> : <>Delete</>}</button>
                                         </div>
                                     </div>
                                 )

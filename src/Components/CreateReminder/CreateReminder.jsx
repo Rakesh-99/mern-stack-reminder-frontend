@@ -65,7 +65,7 @@ const CreateReminder = () => {
 
                     <button type='submit' className='addBtn bg-indigo-500 active:bg-indigo-800 text-white font-semibold rounded-md py-2'>{loading === true ? <p className='font-semibold'>Please wait... <Spinner /></p> : <p>Add reminder</p>}</button>
 
-                    <Link to={'/'} className='addBtn bg-red-500 active:bg-red-800 text-center text-white font-semibold rounded-md py-2'>Back</Link>
+                    <Link to={'/viewreminders'} className='addBtn bg-red-500 active:bg-red-800 text-center text-white font-semibold rounded-md py-2'>Back</Link>
 
                 </form>
             </div>
