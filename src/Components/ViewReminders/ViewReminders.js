@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Navbar from '../NavBar/NavBar'
+import Spinner from '../Spinner/Spinner';
 
 
 const ViewReminders = () => {
@@ -57,9 +58,9 @@ const ViewReminders = () => {
                 <div className="createBtnContainer text-center py-10">
                     <Link className='createBtn px-2 bg-green-600 text-white rounded-md py-2 ' to={'/createreminder'}>Create Reminder</Link>
                 </div>
-                <div className="viewProduct grid grid-cols-1 sm:grid-cols-2 gap-5 md:grid-cols-4">
+                <div className="viewProduct grid  grid-cols-1 sm:grid-cols-2 gap-5 md:grid-cols-4">
                     {
-                        loading === true ? <div className=''><h1 className='text-xl font-semibold'>Fetching the data from server...</h1> </div> :
+                        loading === true ? <div className='w-full h-screen items-center justify-center '> Loading the data from server...<Spinner /> </div> :
                             getData && getData.map((getValue) => {
                                 return (
 

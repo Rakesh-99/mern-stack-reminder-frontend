@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
+import Spinner from '../Spinner/Spinner';
 
 
 
@@ -158,7 +159,7 @@ const Signup = () => {
           className='bg-indigo-500 text-white py-2 px-2 mt-5  shadow-xl shadow-blue-300 rounded-md font-semibold active:bg-indigo-800'
           onClick={register}
         >
-          {loading === true ? <p className='font-bold'>Registering user...</p> : <>Register</>}
+          {loading === true ? <p>Please wait...<Spinner className='ml-10' /></p> : <>Register</>}
         </button>
 
 

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-import Navbar from '../NavBar/NavBar'
+import Navbar from '../NavBar/NavBar';
+import Spinner from '../Spinner/Spinner'
 
 const Login = () => {
 
@@ -124,7 +125,7 @@ const Login = () => {
           className='bg-green-700 text-white py-2  mt-5  rounded-md shadow-xl shadow-green-300 font-semibold active:bg-blue-900'
           onClick={login}
         >
-          {loading === true ? <p className='font-semibold'>Please wait</p> : <p>Login</p>}
+          {loading === true ? <p>Please wait... <Spinner /> </p> : <p>Login</p>}
         </button>
         <div className='flex justify-center mt-5'>
           <Link
